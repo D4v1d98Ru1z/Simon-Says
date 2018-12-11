@@ -58,6 +58,9 @@ body {
     position: absolute;
     top: calc(50% - 50px);
     left: calc(50% - 200px);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
   }
   .hide {
     display: none;
