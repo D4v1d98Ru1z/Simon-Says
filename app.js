@@ -12,11 +12,18 @@ class Game{
 
     init(){
         btnStart.classList.add('hide')
+        this.level = 1
+        this.colors = {
+            blue,
+            violet,
+            orange,
+            green
+        }
     }
 
     generateSequence(){
         //the numer 10 in the array is going to represent the number of levels of the game
-        this.sequence = new Array (10).fill(0).map(numRand => Math.floor(Math.random() * 4))
+        this.sequence = new Array (10).fill(0s).map(numRand => Math.floor(Math.random() * 4))
     }
 }
 
