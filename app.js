@@ -46,6 +46,19 @@ class Game{
         }
     }
 
+    transColortoNum(color){
+        switch (color){
+            case 'blue':
+                return 0
+            case 'violet': 
+                return 1
+            case 'orange':
+                return 2
+            case 'green':
+                return 3
+        }
+    }
+
     iluminateSequence(){
         for(let counter = 0; counter < this.level; counter++){
             const color = this.transNumtoColor(this.sequence[counter])
@@ -70,7 +83,8 @@ class Game{
     }
 
     chooseColor(ev){
-        console.log(this)
+        const colorName = ev.target.dataset.color
+        const colorNumber =         
     }
 }
 
