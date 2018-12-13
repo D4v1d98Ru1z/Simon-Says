@@ -3,7 +3,7 @@ const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
-const LAST_LEVEL = 4
+const LAST_LEVEL = 3
 
 
 class Game{
@@ -17,6 +17,7 @@ class Game{
     init(){
         this.chooseColor = this.chooseColor.bind(this)
         this.nextLevel = this.nextLevel.bind(this)
+        this.continueGame = this.continueGame.bind(this)
         this.togglebtnStart()
         this.level = 1
         this.colors = {
@@ -39,6 +40,19 @@ class Game{
     generateSequence(){
         //the numer 10 in the array is going to represent the number of levels of the game
         this.sequence = new Array (LAST_LEVEL).fill(0).map(numRand => Math.floor(Math.random() * 4))
+    }
+
+    continueGame(){
+        if(this.level === 1){
+            this.nextLevel()
+        }
+        else{
+            swal({
+                title: `Level ${this.level-1} passed`,
+                text: `Next level ${this.level}`,
+                icon: 'success'
+            }).then(this.nextLevel)
+        }
     }
 
     nextLevel(){
@@ -118,7 +132,7 @@ class Game{
                     this.gameWin()
                 }
                 else{
-                    setTimeout(this.nextLevel, 2500)
+                    setTimeout(this.continueGame, 500)
                 }
             }
         }
@@ -131,8 +145,8 @@ class Game{
 
     gameWin(){
         swal ({
-            title: 'Simons',
-            text: `Your level ${this.level}`,
+            title: 'Congratulations!',
+            text: `You win!`,
             icon:'success'
         })
         .then(this.init)
