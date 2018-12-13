@@ -5,6 +5,7 @@ const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
 const LAST_LEVEL = 10
 
+
 class Game{
     constructor(){
         this.init()
@@ -104,6 +105,7 @@ class Game{
                 this.deleteEventClick()
                 if(this.level === (LAST_LEVEL + 1)){
                     // You win!
+                    this.gameWin()
                 }
                 else{
                     setTimeout(this.nextLevel, 1500)
@@ -112,7 +114,13 @@ class Game{
         }
         else{
             //Game over
+            this.gameOver()
         }
+    }
+
+    gameWin(){
+        swal ( "Simons" ,  "Dude, you win!" ,  "succes" )
+        .then(this.init)
     }
 }
 
