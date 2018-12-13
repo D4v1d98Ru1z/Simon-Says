@@ -3,11 +3,12 @@ const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
-const LAST_LEVEL = 10
+const LAST_LEVEL = 1
 
 
 class Game{
     constructor(){
+        this.init = this.init.bind(this)
         this.init()
         this.generateSequence()
         setTimeout(this.nextLevel, 500)
@@ -121,6 +122,14 @@ class Game{
     gameWin(){
         swal ( "Simons" ,  "Dude, you win!" ,  "succes" )
         .then(this.init)
+    }
+
+    gameOver(){
+        swal ( "Simons" ,  "Dude, sorry Game over :c" ,  "error" )
+        .then(() => {
+            this.deleteEventClick()
+            this.init()
+        })
     }
 }
 
