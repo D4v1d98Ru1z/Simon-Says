@@ -101,7 +101,16 @@ class Game{
             if(this.sublevel === this.level){
                 this.level++
                 this.deleteEventClick()
+                if(this.level === (LAST_LEVEL + 1)){
+                    // You win!
+                }
+                else{
+                    setTimeout(this.nextLevel, 1500)
+                }
             }
+        }
+        else{
+            //Game over
         }
     }
 }
