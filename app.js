@@ -118,7 +118,7 @@ class Game{
                     this.gameWin()
                 }
                 else{
-                    setTimeout(this.continueGame, 2500)
+                    setTimeout(this.nextLevel, 2500)
                 }
             }
         }
@@ -128,13 +128,6 @@ class Game{
         }
     }
 
-    continueGame(){
-        swal({
-            title: 'Simons',
-            text: `Well done! you passed ${this.level} level`,
-            icon: 'success'
-        }).then(this.nextLevel)
-    }
 
     gameWin(){
         swal ({
