@@ -3,7 +3,7 @@ const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
-const LAST_LEVEL = 10
+const LAST_LEVEL = 4
 
 
 class Game{
@@ -44,7 +44,7 @@ class Game{
     nextLevel(){
         this.sublevel = 0
         this.iluminateSequence()
-        this.eventClick()        
+        this.eventClick()    
     }
 
     transNumtoColor(number){
@@ -110,15 +110,15 @@ class Game{
         if(colorNumber === this.sequence[this.sublevel]){
             this.sublevel++
             if(this.sublevel === this.level){
+                
                 this.level++
-                console.log(this.level)
                 this.deleteEventClick()
                 if(this.level === (LAST_LEVEL + 1)){
                     // You win!
                     this.gameWin()
                 }
                 else{
-                    setTimeout(this.nextLevel, 1500)
+                    setTimeout(this.continueGame, 2500)
                 }
             }
         }
@@ -128,10 +128,23 @@ class Game{
         }
     }
 
+    continueGame(){
+        swal({
+            title: 'Simons',
+            text: `Well done! you passed ${this.level} level`,
+            icon: 'success'
+        }).then(this.nextLevel)
+    }
+
     gameWin(){
-        swal ( "Simons" ,  "Dude, you win!" ,  "success" )
+        swal ({
+            title: 'Simons',
+            text: `Your level ${this.level}`,
+            icon:'success'
+        })
         .then(this.init)
     }
+
 
     gameOver(){
         swal ( "Simons" ,  "Dude, sorry Game over :c" ,  "error" )
