@@ -3,6 +3,7 @@ const violet = document.getElementById('violeta')
 const orange = document.getElementById('naranja')
 const green = document.getElementById('verde')
 const btnStart = document.getElementById('btnStart')
+const LAST_LEVEL = 10
 
 class Game{
     constructor(){
@@ -25,7 +26,7 @@ class Game{
 
     generateSequence(){
         //the numer 10 in the array is going to represent the number of levels of the game
-        this.sequence = new Array (10).fill(0).map(numRand => Math.floor(Math.random() * 4))
+        this.sequence = new Array (LAST_LEVEL).fill(0).map(numRand => Math.floor(Math.random() * 4))
     }
 
     nextLevel(){
@@ -84,7 +85,11 @@ class Game{
 
     chooseColor(ev){
         const colorName = ev.target.dataset.color
-        const colorNumber =         
+        const colorNumber = this.transColortoNum(colorName) 
+        this.iluminateColor(colorName)
+
+
+        
     }
 }
 
