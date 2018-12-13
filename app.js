@@ -17,13 +17,22 @@ class Game{
     init(){
         this.chooseColor = this.chooseColor.bind(this)
         this.nextLevel = this.nextLevel.bind(this)
-        btnStart.classList.add('hide')
+        this.togglebtnStart()
         this.level = 1
         this.colors = {
             blue,
             violet,
             orange,
             green
+        }
+    }
+
+    togglebtnStart(){
+        if(btnStart.classList.contains('hide')){
+            btnStart.classList.remove('hide')
+        }
+        else{
+            btnStart.classList.add('hide')
         }
     }
 
