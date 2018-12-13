@@ -30,8 +30,9 @@ class Game{
     }
 
     nextLevel(){
+        this.sublevel = 0
         this.iluminateSequence()
-        this.eventClick()
+        this.eventClick()        
     }
 
     transNumtoColor(number){
@@ -83,13 +84,25 @@ class Game{
         this.colors.violet.addEventListener('click', this.chooseColor)
     }
 
+    deleteEventClick(){
+        this.colors.blue.removeEventListener('click', this.chooseColor)
+        this.colors.green.removeEventListener('click', this.chooseColor)
+        this.colors.orange.removeEventListener('click', this.chooseColor)
+        this.colors.violet.removeEventListener('click', this.chooseColor)
+    }
+
     chooseColor(ev){
         const colorName = ev.target.dataset.color
         const colorNumber = this.transColortoNum(colorName) 
         this.iluminateColor(colorName)
-
-
         
+        if(colorNumber === this.sequence[this.sublevel]){
+            this.sublevel++
+            if(this.sublevel === this.level){
+                this.level++
+                this.deleteEventClick()
+            }
+        }
     }
 }
 
