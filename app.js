@@ -20,6 +20,7 @@ class Game{
             orange,
             green
         }
+        this.chooseColor = this.chooseColor.bind(this)
     }
 
     generateSequence(){
@@ -29,6 +30,7 @@ class Game{
 
     nextLevel(){
         this.iluminateSequence()
+        this.eventClick()
     }
 
     transNumtoColor(number){
@@ -58,6 +60,17 @@ class Game{
 
     shutdownColor(color){
         this.colors[color].classList.remove('light')
+    }
+
+    eventClick(){
+        this.colors.blue.addEventListener('click', this.chooseColor)
+        this.colors.green.addEventListener('click', this.chooseColor)
+        this.colors.orange.addEventListener('click', this.chooseColor)
+        this.colors.violet.addEventListener('click', this.chooseColor)
+    }
+
+    chooseColor(ev){
+        console.log(this)
     }
 }
 
