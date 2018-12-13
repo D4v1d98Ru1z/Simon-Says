@@ -94,13 +94,13 @@ class Game{
 
     chooseColor(ev){
         const colorName = ev.target.dataset.color
-        const colorNumber = this.transColortoNum(colorName) 
-        console.log(colorName)
+        const colorNumber = this.transColortoNum(colorName)
         this.iluminateColor(colorName)
         if(colorNumber === this.sequence[this.sublevel]){
             this.sublevel++
             if(this.sublevel === this.level){
                 this.level++
+                console.log(this.level)
                 this.deleteEventClick()
                 if(this.level === (LAST_LEVEL + 1)){
                     // You win!
