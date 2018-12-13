@@ -129,7 +129,7 @@ class Game{
     }
 
     gameWin(){
-        swal ( "Simons" ,  "Dude, you win!" ,  "succes" )
+        swal ( "Simons" ,  "Dude, you win!" ,  "success" )
         .then(this.init)
     }
 
