@@ -1,7 +1,7 @@
-const blue = document.getElementById('celeste')
-const violet = document.getElementById('violeta')
-const orange = document.getElementById('naranja')
-const green = document.getElementById('verde')
+const blue = document.getElementById('blue')
+const violet = document.getElementById('violet')
+const orange = document.getElementById('orange')
+const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
 const LAST_LEVEL = 10
 
@@ -9,10 +9,12 @@ class Game{
     constructor(){
         this.init()
         this.generateSequence()
-        this.nextLevel()
+        setTimeout(this.nextLevel, 500)
     }
 
     init(){
+        this.chooseColor = this.chooseColor.bind(this)
+        this.nextLevel = this.nextLevel.bind(this)
         btnStart.classList.add('hide')
         this.level = 1
         this.colors = {
@@ -21,7 +23,6 @@ class Game{
             orange,
             green
         }
-        this.chooseColor = this.chooseColor.bind(this)
     }
 
     generateSequence(){
@@ -94,8 +95,8 @@ class Game{
     chooseColor(ev){
         const colorName = ev.target.dataset.color
         const colorNumber = this.transColortoNum(colorName) 
+        console.log(colorName)
         this.iluminateColor(colorName)
-        
         if(colorNumber === this.sequence[this.sublevel]){
             this.sublevel++
             if(this.sublevel === this.level){
