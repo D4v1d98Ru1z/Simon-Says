@@ -162,7 +162,7 @@ class Game{
     gameOver(){
         if(this.points > this.highScore){
             localStorage.setItem('pointer', this.points)
-            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "error" )
+            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "succes" )
             .then(() => {
                 this.deleteEventClick()
                 this.init()
@@ -183,9 +183,3 @@ class Game{
 function startGame(){
     window.game = new Game()
 }
-/*
-(function() {
-    let highScore = localStorage.getItem('pointer')
-
-    if (highScore != null) puntaje.innerHTML = highScore        
-})();*/
