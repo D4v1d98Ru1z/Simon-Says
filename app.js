@@ -3,6 +3,7 @@ const violet = document.getElementById('violet')
 const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
+const pointer = document.getElementById('pointer')
 const LAST_LEVEL = 3
 
 
@@ -11,15 +12,18 @@ class Game{
         this.init = this.init.bind(this)
         this.init()
         this.generateSequence()
-        setTimeout(this.nextLevel, 500)
+        setTimeout(this.nextLevel, 750)
     }
 
     init(){
+        this.highScore = localStorage.getItem('pointer')
+        if(this.highScore!= null)  pointer.innerHTML = this.highScore
         this.chooseColor = this.chooseColor.bind(this)
         this.nextLevel = this.nextLevel.bind(this)
         this.continueGame = this.continueGame.bind(this)
         this.togglebtnStart()
         this.level = 1
+        this.points = 0
         this.colors = {
             blue,
             violet,
@@ -126,6 +130,7 @@ class Game{
             if(this.sublevel === this.level){
                 
                 this.level++
+                this.points ++
                 this.deleteEventClick()
                 if(this.level === (LAST_LEVEL + 1)){
                     // You win!
@@ -144,6 +149,7 @@ class Game{
 
 
     gameWin(){
+        localStorage.setItem('pointer', this.points)
         swal ({
             title: 'Congratulations!',
             text: `You win!`,
@@ -154,11 +160,22 @@ class Game{
 
 
     gameOver(){
-        swal ( "Simons" ,  "Dude, sorry Game over :c" ,  "error" )
-        .then(() => {
-            this.deleteEventClick()
-            this.init()
-        })
+        if(this.points > this.highScore){
+            localStorage.setItem('pointer', this.points)
+            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "error" )
+            .then(() => {
+                this.deleteEventClick()
+                this.init()
+            })
+
+        }
+        else{
+            swal ( "Game Over" ,  `Dude, sorry you lose :c your score is: ${this.points}` ,  "error" )
+            .then(() => {
+                this.deleteEventClick()
+                this.init()
+            })
+        }
     }
 }
 
@@ -166,3 +183,9 @@ class Game{
 function startGame(){
     window.game = new Game()
 }
+/*
+(function() {
+    let highScore = localStorage.getItem('pointer')
+
+    if (highScore != null) puntaje.innerHTML = highScore        
+})();*/
