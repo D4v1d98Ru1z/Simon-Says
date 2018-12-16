@@ -8,7 +8,7 @@ Simon says is a very funny game to exercise your memory, just remembering some c
 
 ### Usage
 
-Go to the [live demo]() 
+Go to the [live demo](https://d4v1d98ru1z.github.io/Simon-Says/) 
 
 ### Contribute
 
