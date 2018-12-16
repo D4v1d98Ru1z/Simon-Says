@@ -162,7 +162,7 @@ class Game{
     gameOver(){
         if(this.points > this.highScore){
             localStorage.setItem('pointer', this.points)
-            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "success" )
+            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "error" )
             .then(() => {
                 this.deleteEventClick()
                 this.init()
