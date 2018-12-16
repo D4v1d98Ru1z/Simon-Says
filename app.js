@@ -4,7 +4,7 @@ const orange = document.getElementById('orange')
 const green = document.getElementById('green')
 const btnStart = document.getElementById('btnStart')
 const pointer = document.getElementById('pointer')
-const LAST_LEVEL = 3
+const LAST_LEVEL = 10
 
 
 class Game{
@@ -162,7 +162,7 @@ class Game{
     gameOver(){
         if(this.points > this.highScore){
             localStorage.setItem('pointer', this.points)
-            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "succes" )
+            swal ( "Game Over" ,  `Dude, awesome your score is: ${this.points}` ,  "success" )
             .then(() => {
                 this.deleteEventClick()
                 this.init()
